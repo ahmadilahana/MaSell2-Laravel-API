@@ -15,9 +15,23 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('firsName');
+            $table->string('lastName');
+            $table->string('avatarUrl')->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->integer('countryCode')->nullable();
+            $table->string('country')->nullable();
+            $table->string('region')->nullable();
+            $table->integer('verifyCode')->nullable();
+            $table->timestamp('registerAt')->nullable();
+            $table->string('deviceId')->nullable();
+            $table->string('ipAddress')->nullable();
+            $table->integer('isActived')->nullable();
+            $table->integer('phone_number')->nullable();
+            $table->integer('phoneIsVerify')->nullable();
+            $table->integer('phoneIsVerifyAt')->nullable();
+            $table->integer('emailIsVerify')->nullable();
+            $table->timestamp('emailIsVerifyAt')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
