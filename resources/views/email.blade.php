@@ -1,1 +1,1 @@
-<p>Successfullty</p>
+<p>Successfully Code : {{ $code }}</p>
