@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group([
-    'namespace' => 'App\Http\Controllers\Api'
+    'namespace' => 'App\Http\Controllers\api'
 ], function(){
     Route::post('register', 'UserController@register');
+    Route::post('auth/register', 'SellerController@register');
+    Route::post('auth/verification', 'SellerController@verification');
+    Route::post('auth/resendCode', 'SellerController@resendCode');
+    Route::post('auth/login', 'SellerController@login');
+    Route::get('stores', 'StoresController@show')->middleware('jwt.verify');
+    Route::get('auth/refreshToken', 'SellerController@refreshToken');
+    Route::post('stores', 'StoresController@store')->middleware('jwt.verify');
     Route::post('login', 'UserController@login');
     Route::get('book', 'BookController@book');
     

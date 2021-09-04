@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Mail\EmailVerification;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+
+
 class AppHelper extends Controller
 {
     public static function getLocationInfoByIp(){
@@ -27,5 +32,13 @@ class AppHelper extends Controller
         }
 
        return $result;
+    }
+
+    public static function sendEmail($email, $code){
+        $emailVerifycation = new EmailVerification();
+
+        $emailVerifycation->verifyCode = $code;
+
+        Mail::to($email)->send($emailVerifycation);
     }
 }

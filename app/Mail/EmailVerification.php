@@ -11,6 +11,9 @@ class EmailVerification extends Mailable
 {
     use Queueable, SerializesModels;
 
+
+    public $verifyCode = null;
+
     /**
      * Create a new message instance.
      *
@@ -28,6 +31,7 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->view('email');
+        
+        return $this->view('email', ['code' => $this->verifyCode]);
     }
 }
